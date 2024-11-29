@@ -13,6 +13,7 @@ plugins {
   id("com.adarshr.test-logger")
   id("com.diffplug.eclipse.apt")
   id("net.ltgt.errorprone")
+  id("maven-publish")
   jacoco
 }
 // expose version catalog
@@ -97,5 +98,12 @@ tasks {
       disable("ReferenceEquality") // lots of comparison against EMPTY objects
       disable("CanIgnoreReturnValueSuggester") // suggests errorprone annotation, not JB Contract annotation
     }
+  }
+}
+
+configure<PublishingExtension> {
+  repositories.maven("https://repo.booky.dev/releases") {
+    name = "horreo"
+    credentials(PasswordCredentials::class.java)
   }
 }
