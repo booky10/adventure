@@ -1,5 +1,6 @@
 plugins {
   id("net.kyori.indra.publishing")
+  id("maven-publish")
 }
 
 // expose version catalog
@@ -63,5 +64,12 @@ indra {
         }
       }
     }
+  }
+}
+
+configure<PublishingExtension> {
+  repositories.maven("https://repo.booky.dev/releases") {
+    name = "horreo"
+    credentials(PasswordCredentials::class.java)
   }
 }
