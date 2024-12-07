@@ -21,34 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.kyori.adventure.text.minimessage.tag.standard;
+package net.kyori.adventure.util;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.ShadowColor;
-import net.kyori.adventure.text.minimessage.AbstractTest;
-import org.junit.jupiter.api.Test;
+import org.jetbrains.annotations.Range;
 
-class ShadowTagTest extends AbstractTest {
-
-  @Test
-  void testSerializeShadow() {
-    final String expected = "<shadow:#054D79FF>This is a test";
-
-    final Component builder = Component.text("This is a test").shadowColor(ShadowColor.shadowColor(-16429703));
-
-    this.assertSerializedEquals(expected, builder);
-    this.assertParsedEquals(builder, expected);
-  }
-
-  @Test
-  void testSerializeShadowClosing() {
-    final String expected = "<shadow:#054D79FF>This is a</shadow> test";
-
-    final Component builder = Component.text()
-      .append(Component.text("This is a").shadowColor(ShadowColor.shadowColor(-16429703)))
-      .append(Component.text(" test")).asComponent();
-
-    this.assertSerializedEquals(expected, builder);
-    this.assertParsedEquals(builder, expected);
-  }
+/**
+ * Something that can provide red, green, and blue, and alpha colour components.
+ *
+ * @since 4.18.0
+ */
+public interface ARGBLike extends RGBLike {
+  /**
+   * Gets the alpha component.
+   *
+   * @return the alpha component
+   * @since 4.18.0
+   */
+  @Range(from = 0x0, to = 0xff) int alpha();
 }

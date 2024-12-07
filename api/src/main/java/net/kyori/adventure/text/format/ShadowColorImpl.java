@@ -1,7 +1,7 @@
 /*
  * This file is part of adventure, licensed under the MIT License.
  *
- * Copyright (c) 2017-2023 KyoriPowered
+ * Copyright (c) 2017-2024 KyoriPowered
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,9 @@
 package net.kyori.adventure.text.format;
 
 final class ShadowColorImpl implements ShadowColor {
+  static final int NONE_VALUE = 0;
+  static final ShadowColorImpl NONE = new ShadowColorImpl(NONE_VALUE);
+
   private final int value;
 
   ShadowColorImpl(final int value) {
